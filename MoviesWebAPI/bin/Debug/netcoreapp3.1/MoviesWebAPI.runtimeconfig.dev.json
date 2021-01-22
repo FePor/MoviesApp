@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\porush\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\porush\\.nuget\\packages"
+    ]
+  }
+}

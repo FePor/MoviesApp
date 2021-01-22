@@ -1,0 +1,25 @@
+<div class="movie-container">
+    <img (click)="openModal()" class="movie-poster" *ngIf="movie.Poster" src="{{ movie.Poster }}"
+        alt="">
+
+    <div (click)="openModal()" class="movie-info">
+        <h3 *ngIf="movie.Title">{{ movie.Title }}</h3>
+        <div class="rating">
+        <div class="release">
+            <span *ngIf="movie.Released">Release Date: {{ movie.Released }}</span>
+        </div>
+        <div class="genre">
+            <span *ngIf="movie.Genre">Genre :{{ movie.Genre }} </span>
+        </div>
+        <div class="genre">
+            <span *ngIf="movie.Language">Language :{{ movie.Language }} </span>
+        </div>
+        <div class="genre">
+            <span *ngIf="movie.Rating">Rating: {{ movie.Rating }} </span>
+        </div>
+       
+    </div>
+    </div>
+
+    
+</div>
