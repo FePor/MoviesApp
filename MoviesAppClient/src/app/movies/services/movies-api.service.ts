@@ -14,10 +14,11 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class MoviesApiService {
-  //private getAllMoviesUrl = `${this.serverUrl}/api/all-movies`
+//private getAllMoviesUrl = `${this.serverUrl}/api/all-movies`
   //https://localhost:44352/movies
   //private moviesEndpoint = 'https://www.omdbapi.com/?apikey=34478a98&s=batman&r=json';
   private moviesEndpoint = `https://localhost:44352/movies?t=`;
+  
   constructor(
     private http: HttpClient) {}
 

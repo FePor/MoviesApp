@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   imports: [
     BrowserModule,

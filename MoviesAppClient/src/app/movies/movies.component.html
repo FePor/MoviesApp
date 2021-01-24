@@ -39,6 +39,7 @@
   
  <div class="movies-filter-header">
   <div class="filter-input">
+    <div>
     <span class="count">
       FILTER BY Language: 
     </span>
@@ -49,13 +50,12 @@
       <option value="en">English</option>
       <option value="he">Hebrew</option>
     </select>
-
-    
   </span>
-  <span class="mar-le">
+</div>
+<div>
+  <span class="rate" >
     BY release date range: 
 
-    <span class="">
     
     <mat-form-field  class="filter-input">
       <input matInput placeholder="after date" [matDatepicker]="picker" (dateChange)="onfromDate($event)">
@@ -70,15 +70,18 @@
 
     </mat-form-field>
   </span>
-  </span>
-  <span class="mar-le rate">
+</div>
+  <span class="rate">
     BY rating: 
  
   <span class="rating-input">
     from
-    <input class="inputt" type="number" #min  min=0 max="filter.rate.max" (change)="changeRate($event)" />
+    <input class="inputt" type="number" #min value="0"  min=0 max="moviesFilter.rate.to" (change)="changeRate($event)" />
+    <span class="err" *ngIf="!validInputfrom">Please enter a value between 0 and {{max.value}}</span>
     to
-    <input class="inputt" type="number" #max  min="filter.rate.min" max=10 (change)="changeRateTo($event)"/>
+    <input class="inputt" type="number" #max value="10" min="moviesFilter.rate.from" max=10 (change)="changeRateTo($event)"/>
+    <span class="err" *ngIf="!validInputto">Please enter a value between {{min.value}} and 10</span>
+    
   </span>
 </span>
  

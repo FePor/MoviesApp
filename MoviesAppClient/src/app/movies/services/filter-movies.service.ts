@@ -30,4 +30,16 @@ export class FilterMoviesService {
       movies = movies.filter(c => c.Rating == null || c.Rating<=filter.rate.to );
     return movies;//geners
   }
+
+  checkValidFrom(val,to): boolean {
+    if(!to)
+      return val >=0 && val <=10;
+    return val < to && val >= 0;
+  }
+
+  checkValidTo(val,from): boolean {
+    if(!from)
+      return val >=0 && val <=10;
+    return val < 10 && val > from;
+  }
 }

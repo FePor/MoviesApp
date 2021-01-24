@@ -6,6 +6,7 @@ import { Language } from './models/language.model';
 import { MoviesApiService } from './services/movies-api.service';
 import { FilterMoviesService } from './services/filter-movies.service';
 import { FadeIn } from '../shared/animations';
+
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -27,18 +28,25 @@ export class MoviesComponent implements OnInit {
 
   filterLanguage: any = 'all';
   moviesFilter: FilterSetting;
+
+  validInputfrom =true;
+  validInputto =true;
+
   
   constructor(
     private moviesApiService: MoviesApiService,
     private filterMoviesService: FilterMoviesService
     ){
       this.moviesFilter = new FilterSetting();
+      //this.rateControl = new FormControl("", [Validators.max(10), Validators.min(0)])
+
     }
 
   ngOnInit() {
   
     //this.loadMovies('batman');
     this.loadMovies();
+  
   }
   
   loadMovies(search:string =''){
@@ -74,17 +82,29 @@ export class MoviesComponent implements OnInit {
     this.applyFilterBy();
   }
   ontoDate(event): void {
+
     this.moviesFilter.toDate = event.value;
     this.applyFilterBy();
 
   }
+  
+
+ 
   changeRate(event): void {
+    let val =parseFloat(event.target.value);
+    this.validInputfrom = this.filterMoviesService.checkValidTo(val,this.moviesFilter.toDate);
+    if(this.validInputfrom){
     this.moviesFilter.rate.from = parseFloat(event.target.value);
     this.applyFilterBy();
+    }
   }
   changeRateTo(event): void {
-    this.moviesFilter.rate.to = parseFloat(event.target.value);
+    let val =parseFloat(event.target.value);
+    this.validInputto = this.filterMoviesService.checkValidFrom(val,this.moviesFilter.fromDate);
+    if(this.validInputto){
+    this.moviesFilter.rate.to = val;
     this.applyFilterBy();
+    }
   }
   
   private applyFilterBy() {
