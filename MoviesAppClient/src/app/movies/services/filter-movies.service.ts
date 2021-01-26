@@ -40,6 +40,6 @@ export class FilterMoviesService {
   checkValidTo(val,from): boolean {
     if(!from)
       return val >=0 && val <=10;
-    return val < 10 && val > from;
+    return val <= 10 && val > from;
   }
 }

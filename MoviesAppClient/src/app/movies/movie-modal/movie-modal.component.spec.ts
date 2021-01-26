@@ -16,7 +16,7 @@ describe('MovieModalComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MovieModalComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges(); 
   });
 
   it('should create', () => {

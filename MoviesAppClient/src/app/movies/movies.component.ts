@@ -74,7 +74,8 @@ export class MoviesComponent implements OnInit {
     this.applyFilterBy();
   }
   changeTitle(event: any):void {
-    //this.moviesFilter.clear()
+    this.moviesFilter.clear()
+
     this.loadMovies(this.searchTitle);
   }
   onfromDate(event): void {
@@ -92,7 +93,7 @@ export class MoviesComponent implements OnInit {
  
   changeRate(event): void {
     let val =parseFloat(event.target.value);
-    this.validInputfrom = this.filterMoviesService.checkValidTo(val,this.moviesFilter.toDate);
+    this.validInputfrom = this.filterMoviesService.checkValidFrom(val,this.moviesFilter.rate.to);
     if(this.validInputfrom){
     this.moviesFilter.rate.from = parseFloat(event.target.value);
     this.applyFilterBy();
@@ -100,7 +101,7 @@ export class MoviesComponent implements OnInit {
   }
   changeRateTo(event): void {
     let val =parseFloat(event.target.value);
-    this.validInputto = this.filterMoviesService.checkValidFrom(val,this.moviesFilter.fromDate);
+    this.validInputto = this.filterMoviesService.checkValidTo(val,this.moviesFilter.rate.from);
     if(this.validInputto){
     this.moviesFilter.rate.to = val;
     this.applyFilterBy();

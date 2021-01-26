@@ -44,7 +44,7 @@
       FILTER BY Language: 
     </span>
     <span>
-    <select value="all" (change)="changeLanguage($event)" >
+    <select value="{{moviesFilter.language}}" (change)="changeLanguage($event)" >
       <option value="all">All</option>
       <option value="fr">Franch</option>
       <option value="en">English</option>
@@ -76,10 +76,10 @@
  
   <span class="rating-input">
     from
-    <input class="inputt" type="number" #min value="0"  min=0 max="moviesFilter.rate.to" (change)="changeRate($event)" />
+    <input class="inputt" type="number" #min value="{{moviesFilter.rate.from}}"  min=0 max="moviesFilter.rate.to" (change)="changeRate($event)" />
     <span class="err" *ngIf="!validInputfrom">Please enter a value between 0 and {{max.value}}</span>
     to
-    <input class="inputt" type="number" #max value="10" min="moviesFilter.rate.from" max=10 (change)="changeRateTo($event)"/>
+    <input class="inputt" type="number" #max value="{{moviesFilter.rate.to}}" min="moviesFilter.rate.from" max=10 (change)="changeRateTo($event)"/>
     <span class="err" *ngIf="!validInputto">Please enter a value between {{min.value}} and 10</span>
     
   </span>

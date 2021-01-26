@@ -8,7 +8,10 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 
 declare const require: any;
-
+const excludedSpecs = [
+'./app/movies/movie-item/movie-item.component.spec.ts',
+'./app/movies/movie-modal/movie-modal.component.spec.ts',
+];
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -16,5 +19,6 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
+debugger;
 // And load the modules.
-context.keys().map(context);
+context.keys().filter(file => excludedSpecs.includes(file) === false).map(context);
